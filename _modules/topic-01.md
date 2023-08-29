@@ -15,6 +15,6 @@ title: Topic 01 - Introduction to Alloy
   : [Slides]({{ site.baseurl }}{% link _lessons/00-course-intro/sets-slides.pdf %}),
   : [Old recorded lecture](https://youtu.be/4SWhZBGC-vI)
 
-23 Aug
+23, 28, 30 Aug
 : [**Introduction to Alloy**]({{ site.baseurl }}{% link _lessons/01-alloy-intro/alloy-intro.md %})
   : [Old recorded lectures](https://www.youtube.com/playlist?list=PLeIbBi3CwMZxRUSUJbwyeerfCptuP19Br)
