@@ -54,9 +54,9 @@ just_the_docs:
   collections:
     lessons:
       name: Notes
-      # order:
-      #   - _lessons/01-sml-intro/sml-intro.md
-      #   - _lessons/04-polymorphism/polymorphism.md
+      order:
+        - _lessons/01-alloy-intro/alloy-intro.md
+        - _lessons/01-alloy-intro/academia.md
 
 compress_html:
   clippings: all
