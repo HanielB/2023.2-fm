@@ -55,8 +55,8 @@ just_the_docs:
     lessons:
       name: Notes
       order:
-        - _lessons/01-alloy-intro/alloy-intro.md
-        - _lessons/01-alloy-intro/academia.md
+        - lessons/01-alloy-intro/alloy-intro.md
+        - lessons/01-alloy-intro/academia.md
 
 compress_html:
   clippings: all
