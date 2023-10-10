@@ -89,7 +89,7 @@ if __name__ == '__main__':
 
 ### Resolvendo o problema das n-rainhas
 
-Segundo a codificação dada [neste conjunto de slides]({{ site.baseurl }}{% link _lessons/01-prop-logic/ilc-sat.pdf %}), podemos escrever o programa abaixo que dá todas as soluções para o problema das `n` rainhas, para um dado `n`.
+Segundo a codificação dada [neste conjunto de slides]({{ site.baseurl }}{% link _lessons/solving/ilc-sat.pdf %}), podemos escrever o programa abaixo que dá todas as soluções para o problema das `n` rainhas, para um dado `n`.
 
 ```python
 from cvc5.pythonic import *
