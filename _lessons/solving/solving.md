@@ -13,21 +13,21 @@ title: Constraint solving for Alloy
 {: .no_toc .mb-2 }
 
 - Writings on the board:
-  - [Board for the overview of leveraging SAT solvers]({{ site.baseurl }}{% link _lessons/04-solving/alloy2sat.png %})
-  - [Board for SAT solving]({{ site.baseurl }}{% link _lessons/04-solving/satSolving.png %})
-  - [Board for Alloy encoding into SAT]({{ site.baseurl }}{% link _lessons/04-solving/alloy2sat-encoding.png %})
+  - [Board for the overview of leveraging SAT solvers]({{ site.baseurl }}{% link _lessons/solving/alloy2sat.png %})
+  - [Board for SAT solving]({{ site.baseurl }}{% link _lessons/solving/satSolving.png %})
+  - [Board for Alloy encoding into SAT]({{ site.baseurl }}{% link _lessons/solving/alloy2sat-encoding.png %})
 
 - State-of-the-art SAT solving:
-  - [Slides by João Marques-Silva and Mikoláš Janota]({{ site.baseurl }}{% link _lessons/04-solving/Marques-Silva-sat-summerschool2013.pdf %})
-  - [Slides by Marijn Heule]({{ site.baseurl }}{% link _lessons/04-solving/SCSC-Heule1.pdf %})
+  - [Slides by João Marques-Silva and Mikoláš Janota]({{ site.baseurl }}{% link _lessons/solving/Marques-Silva-sat-summerschool2013.pdf %})
+  - [Slides by Marijn Heule]({{ site.baseurl }}{% link _lessons/solving/SCSC-Heule1.pdf %})
 
-- [Automating Alloy solving]({{ site.baseurl }}{% link _lessons/04-solving/Jackson2000.pdf %}), paper by Daniel Jackson.
+- [Automating Alloy solving]({{ site.baseurl }}{% link _lessons/solving/Jackson2000.pdf %}), paper by Daniel Jackson.
 
 ### Recommended readings
 {: .no_toc .mb-2 }
 
-- [Kodkod: A Relational Model Finder]({{ site.baseurl }}{% link _lessons/04-solving/Torlak2007.pdf %})
-- [Alloy*: A General-Purpose Higher-Order Relational Constraint Solver]({{ site.baseurl }}{% link _lessons/04-solving/Milisevic2015.pdf %})
+- [Kodkod: A Relational Model Finder]({{ site.baseurl }}{% link _lessons/solving/Torlak2007.pdf %})
+- [Alloy*: A General-Purpose Higher-Order Relational Constraint Solver]({{ site.baseurl }}{% link _lessons/solving/Milisevic2015.pdf %})
 
 ## From Alloy to SAT
 
@@ -41,9 +41,123 @@ The satisfiability problem consists of determining if there exists a valuation
 to the variables of a propositional formula (i.e., a formula in propositional
 logic).
 
-### Encoding Sudoku as SAT
+## Resolução de problemas via SAT
 
-- [Sudoku as a SAT problem]({{ site.baseurl }}{% link _lessons/04-solving/sudoku_sat.pdf %})
+Podemos resolver problemas SAT automaticamente usando ferramentas de *automatização de raciocínio*. Um exemplo é o [cvc5](https://cvc5.github.io/), um solucionador SMT (de *satisfatibilidade módulo teorias*; falaremos um pouco mais sobre SMT em futuras aulas).
+
+Como vimos em aula, podemos usar a [API](https://pt.wikipedia.org/wiki/Interface_de_programa%C3%A7%C3%A3o_de_aplica%C3%A7%C3%B5es) do cvc5 em Python para escrever programas nessa linguagem que resolvem problemas que podemos representar via SAT.
+
+Para instalar o `cvc5` e usar sua API em Python, basta instalar o cvc5 com, por exemplo:
+
+``` shell
+pip install cvc5
+```
+
+Mais instruções sobre instalação estão disponíveis [aqui](https://cvc5.github.io/docs/cvc5-1.0.7/api/python/python.html). E a documentação das operações disponíveis na API estão [aqui](https://cvc5.github.io/docs/cvc5-1.0.7/api/python/pythonic/pythonic.html).
+
+### Determinando a satisfatibilidade de uma fórmula proposicional
+
+O programa abaixo, ao ser executado, apresnta todas as soluções para a fórmula 
+
+```
+(p v q v r) ∧ (¬p v ¬q v ¬r)
+```
+
+```python
+from cvc5.pythonic import *
+
+if __name__ == '__main__':
+    p, q, r = Bools("p q r")
+    s = Solver()
+
+    # p v q v r
+    s.add(Or(p, q, r))
+    # ¬p v ¬q v ¬r
+    s.add(Or(Not(p), Not(q), Not(r)))
+
+    count = 0
+    while (s.check() == sat):
+        m = s.model()
+        print("Solution {}".format(count))
+        print("p: ", m[p])
+        print("q: ", m[q])
+        print("r: ", m[r])
+        s.add(Or(p != m[p], q != m[q], r != m[r]))
+        print("============")
+        count += 1
+```
+
+### Resolvendo o problema das n-rainhas
+
+Segundo a codificação dada [neste conjunto de slides]({{ site.baseurl }}{% link _lessons/01-prop-logic/ilc-sat.pdf %}), podemos escrever o programa abaixo que dá todas as soluções para o problema das `n` rainhas, para um dado `n`.
+
+```python
+from cvc5.pythonic import *
+
+# Definindo o número de rainhas
+n = 8
+
+if __name__ == '__main__':
+    # Criamos n+1 posições para que possamos contar de 1 até n (em vez de 0 
+    # até n-1, como seria o padrão)
+    board = [[None for i in range(n+1)] for i in range(n+1)]
+    # Criamos uma variável para cada posição no tabuleiro
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            board[i][j] = Bool("p{}{}".format(i, j))
+
+    s = Solver()
+    # Q1: há pelo menos uma rainha por linha
+    for i in range(1, n+1):
+        row = []
+        for j in range(1, n+1):
+            row += [board[i][j]]
+        s.add(Or(row))
+
+    # Q2: há no máximo uma rainha por linha
+    for i in range(1, n+1):
+        for j in range(1, n):
+            for k in range(j+1, n+1):
+                s.add(Implies(board[i][j], Not(board[i][k])))
+
+    # Q3: há no máximo uma rainha por coluna
+    for j in range(1, n+1):
+        for i in range(1, n):
+            for k in range(i+1, n+1):
+                s.add(Implies(board[i][j], Not(board[k][j])))
+
+    # Q4: não há rainhas na mesma diagonal (parte 1)
+    for i in range(2, n+1):
+        for j in range(1, n):
+            for k in range(1, min(i-1, n-j) + 1):
+                s.add(Implies(board[i][j], Not(board[i-k][k+j])))
+
+    # Q5: não há rainhas na mesma diagonal (parte 2)
+    for i in range(1, n):
+        for j in range(1, n):
+            for k in range(1, min(n-i, n-j) + 1):
+                s.add(Implies(board[i][j], Not(board[i+k][j+k])))
+
+    count = 0
+    while (s.check() == sat):
+        m = s.model()
+        values = []
+        count += 1
+        print("Solution {}\n----------".format(count))
+        for i in range(1, n+1):
+            string = ""
+            for j in range(1, n+1):
+                string += "{}{}".format("Q" if m[board[i][j]] else "_", ", " if j < n else "")
+                values += [board[i][j] != m[board[i][j]]]
+            print(string)
+        print("===============================================")
+        # block current solution
+        s.add(Or(values))
+```
+
+## Encoding Sudoku as SAT
+
+- [Sudoku as a SAT problem]({{ site.baseurl }}{% link _lessons/solving/sudoku_sat.pdf %})
 
 - SAT problems can be solved with SAT solvers
 
