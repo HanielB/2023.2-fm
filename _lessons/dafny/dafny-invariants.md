@@ -12,13 +12,13 @@ title: Dafny invariants and arrays
 ## Readings
 
 - [Dafny Reference Manual](https://dafny-lang.github.io/dafny/DafnyRef/DafnyRef)
-- [Board for programs as transition systems]({{ site.baseurl }}{% link _lessons/dafny-invariants/board.png %})
+- [Board for programs as transition systems]({{ site.baseurl }}{% link _lessons/dafny/board.png %})
 
 ### Recommended readings
 
 - Lectures notes by Cesare Tinelli:
-  - [Arrays in Dafny (part I)]({{ site.baseurl }}{% link _lessons/dafny-invariants/cesare-arrays.pdf %})
-  - [Arrays in Dafny (part II)]({{ site.baseurl }}{% link _lessons/dafny-invariants/cesare-arrays-ii.pdf %})
+  - [Arrays in Dafny (part I)]({{ site.baseurl }}{% link _lessons/dafny/cesare-arrays.pdf %})
+  - [Arrays in Dafny (part II)]({{ site.baseurl }}{% link _lessons/dafny/cesare-arrays-ii.pdf %})
 
 ## Topics
 

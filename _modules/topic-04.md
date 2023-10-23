@@ -6,13 +6,13 @@ title: Topic 04 - Specifying and verifying programs with Dafny
 {: .text-gamma }
 
 25, 30 Out
-: [**Introduction to Dafny**]({{ site.baseurl }}{% link _lessons/dafny-intro/dafny-intro.md %})
+: [**Introduction to Dafny**]({{ site.baseurl }}{% link _lessons/dafny/dafny-intro.md %})
   : [Old recorded lecture](https://youtu.be/8a1CsK5YqLc)
   : [Old recorded lecture](https://youtu.be/hjILHtFgI1o)
   : [Old recorded lecture](https://youtu.be/BVAUFQHVbjg)
 
 01, 06 Nov
-: [**Arrays, invariants and frame conditions**]({{ site.baseurl }}{% link _lessons/dafny-invariants/dafny-invariants.md %})
+: [**Arrays, invariants and frame conditions**]({{ site.baseurl }}{% link _lessons/dafny/dafny-invariants.md %})
   : [Old recorded lecture](https://youtu.be/e6VhUqn_aqA)
   : [Old recorded lecture](https://youtu.be/JPOR5n4GH2M)
 
@@ -20,7 +20,7 @@ title: Topic 04 - Specifying and verifying programs with Dafny
 : No class
 
 08, 13 Nov
-: [**OO programming and verification in Dafny**]({{ site.baseurl }}{% link _lessons/dafny-oo/danfy-oo.md %})
+: [**OO programming and verification in Dafny**]({{ site.baseurl }}{% link _lessons/dafny/danfy-oo.md %})
   : [Old recorded lecture](https://youtu.be/3IFWLOieE5w)
   : [Old recorded lecture](https://youtu.be/gQZZVyIpYQc)
 

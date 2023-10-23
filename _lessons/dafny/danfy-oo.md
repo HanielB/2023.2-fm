@@ -12,7 +12,7 @@ title: Dafny and object orientation
 
 ## Readings
 
-- [Lein13]({{ site.baseurl }}{% link _lessons/dafny-oo/Lein13.pdf %}) and [Herb11]({{ site.baseurl }}{% link _lessons/dafny-oo/Herb11.pdf %}), tutorial and lecture notes on Dafny
+- [Lein13]({{ site.baseurl }}{% link _lessons/dafny/Lein13.pdf %}) and [Herb11]({{ site.baseurl }}{% link _lessons/dafny/Herb11.pdf %}), tutorial and lecture notes on Dafny
 - [Collection types](https://dafny-lang.github.io/dafny/DafnyRef/DafnyRef#sec-collection-types) chapter from Dafny's refernce manual
 - [Class types](https://dafny-lang.github.io/dafny/DafnyRef/DafnyRef#sec-class-types) chapter from Dafny's refernce manual
 
@@ -166,7 +166,7 @@ function update(s: seq<int>, i: int, v: int): seq<int>
 
 ## Class types
 
-From [Lein13]({{ site.baseurl }}{% link _lessons/dafny-oo/Lein13.pdf %}):
+From [Lein13]({{ site.baseurl }}{% link _lessons/dafny/Lein13.pdf %}):
 
 > Classes offer a way to dynamically allocate mutable data
 structures. References (that is, pointers) to components of these data

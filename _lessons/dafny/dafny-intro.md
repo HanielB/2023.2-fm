@@ -11,14 +11,14 @@ title: Dafny Introduction
 
 ## Readings
 
-- Sections 1-5 of [[Koen12]({{ site.baseurl }}{% link _lessons/dafny-intro/Koen12.pdf %})], an introduction to the Dafny language
+- Sections 1-5 of [[Koen12]({{ site.baseurl }}{% link _lessons/dafny/Koen12.pdf %})], an introduction to the Dafny language
   - Also available as an [online tutorial](http://rise4fun.com/Dafny/tutorial/guide)
-- [Examples]({{ site.baseurl }}{% link _lessons/dafny-intro/examples.tar.gz %})
+- [Examples]({{ site.baseurl }}{% link _lessons/dafny/examples.tar.gz %})
 - [Dafny Reference Manual](https://dafny-lang.github.io/dafny/DafnyRef/DafnyRef)
 
 ### Recommended readings
 
-- [[Wing95]({{ site.baseurl }}{% link _lessons/dafny-intro/Wing95.pdf %})], which provides several hints to specifiers.
+- [[Wing95]({{ site.baseurl }}{% link _lessons/dafny/Wing95.pdf %})], which provides several hints to specifiers.
 
 ## Topics
 
