@@ -20,5 +20,5 @@ title: Topic 03 - Constraint solving for Alloy
 18 Oct
 : [**Encoding Alloy into SMT**]({{ site.baseurl }}{% link _lessons/solving/solving.md %})
 
-21 Oct
+23 Oct
 : Laboratory: SAT and SMT solving (async)
