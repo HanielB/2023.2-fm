@@ -15,6 +15,20 @@ extension contains everything you need, including its own copy of Dafny.
 
 **Note**: you need to have .NET installed. Only the runtime one is necessary. If you want to install it on Ubuntu, for example, you can follow [these instructions](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu), or likewise look for similar instructions for your environment. To install on Windows, you can download the SDK (preferably version >= 6) and install, then you must configure the executable path of the dotnet.exe file when prompted in Visual Studio Code.
 
+## Mac M1 installation
+
+Thanks to Guilherme de Oliveira Silva:
+
+1. Install Dafny via Homebrew with `brew install dafny`. All dependencies will be automatically installed.
+
+2. Install the Dafny extension on VS Code.
+
+3. Edit the `settings.json` file of VS Code to include:
+
+"dafny.dotnetExecutablePath": "/opt/homebrew/opt/dotnet@6/bin/dotnet",
+"dafny.languageServerRuntimePath": "/opt/homebrew/Cellar/dafny/4.3.0/libexec/DafnyLanguageServer.dll",
+"dafny.compilerRuntimePath": "/opt/homebrew/Cellar/dafny/4.3.0/libexec/Dafny.dll"
+
 # Using Dafny
 
 Opening a Dafny file (with a `.dfy` extension) with Visual Studio or Visual Studio Code will allow you to see syntax highlighting as well as any errors, as underlined text, in the code or specification. Dafny is reinvoked automatically as you edit the text.
