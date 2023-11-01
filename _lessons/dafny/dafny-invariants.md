@@ -33,10 +33,9 @@ title: Dafny invariants and arrays
 
 ## Programs as transition systems
 
-Dafny verifies programs via [symbolic
-execution](https://en.wikipedia.org/wiki/Symbolic_execution). This way the
+Dafny verifies programs by reasoning about them *symbolically*. This way the
 contracts we write are guaranteed to hold for *any* input the program runs on,
-since verification was performed *forall* possible inputs.
+since verification was performed for *all* possible inputs.
 
 An imperative program can be seen as a state machine, starting at an initial
 state and transitioning between states as commands are performed. Each state is
