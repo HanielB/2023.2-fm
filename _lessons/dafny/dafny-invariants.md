@@ -100,8 +100,7 @@ method Find(a: array<int>, key: int) returns (index: int)
     {
         // I[index, a] ^ (index < a.Length ^ a[index] != key) ==> I[b + 1, a]
         if (a[index] == key) { return; }
-        var b := myMethod(index);
-        index := b + 1;
+        index := index + 1;
     }
     index := -1;
     return;

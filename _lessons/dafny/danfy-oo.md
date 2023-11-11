@@ -198,7 +198,7 @@ class Queue<T> {
   var a: array<T>;
   var n: nat;
 
-  predicate Valid()
+  ghost predicate Valid()
     reads this, a
   {
     // consistency conditions for concrete state
